@@ -1,0 +1,14 @@
+{
+    "title": "Laboratorium Industry 4.0",
+    "navbar":
+    {
+        "left_item":    "Start",
+        "right_item_1": "Stacje",
+        "right_item_2": "Zamówienie"
+    },
+    "start":
+    {
+        "title": "Laboratorium Industry 4.0",
+        "subtitle": "Realizuj zamówienia - Obserwuj stacje - Ciesz się produktem"
+    }
+}
