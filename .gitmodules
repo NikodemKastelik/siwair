@@ -1,0 +1,3 @@
+[submodule "static/startbootstrap-freelancer"]
+	path = static/startbootstrap-freelancer
+	url = git@github.com:NikodemKastelik/startbootstrap-freelancer.git
