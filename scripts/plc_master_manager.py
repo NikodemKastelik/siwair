@@ -24,7 +24,7 @@ class PlcMasterManager:
         for station_name in self.STATIONS_NAMES:
             self._stations_statuses[station_name] = {}
             for status_name in self.STATIONS_STATUSES_NAMES:
-                self._stations_statuses[station_name][station_name] = False
+                self._stations_statuses[station_name][status_name] = False
 
     def _print(self, string):
         print("PlcMasterManager: {}".format(string))
