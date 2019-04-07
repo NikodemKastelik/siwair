@@ -45,7 +45,6 @@ class PlcMasterManager:
             for idx, status in enumerate(self.STATIONS_STATUSES_NAMES):
                 val = bool(byte & (1 << idx))
                 self._stations_statuses[station][status] = val
-                self._print("{} status {}: {}".format(station, status, val))
 
     def _parseResponse(self, data):
         if len(data) == self.CMD_STATUS_FRAME_LEN and data[0] == self.CMD_CODE_GET_STATUS[0]:
@@ -65,6 +64,9 @@ class PlcMasterManager:
             if self.isPlcConnected:
                 self._sock_mngr.send(self.CMD_CODE_GET_STATUS)
             time.sleep(self.STATUS_PINGER_TIMEOUT)
+
+    def getStatuses(self):
+        return self._stations_statuses
 
     def isPlcConnected(self):
         return self._sock_mngr.isConnected()
