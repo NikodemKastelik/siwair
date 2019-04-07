@@ -9,6 +9,17 @@
   color: white;
 }
 
+.on-img-topleft {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: 2em;
+  color: white;
+}
+
 .status-dot {
   position: absolute;
   top: 25%;
