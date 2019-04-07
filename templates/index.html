@@ -185,6 +185,12 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6 col-md-offset-3">
+          <div id="app">
+            <model-stl
+              :background-color="bgColor"
+              src="static/models/gear.stl" >
+            </model-stl>
+          </div>
           <div class="progress" style="height:25px">
             <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressbar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; height: 25px">
             </div>
@@ -359,6 +365,17 @@
   <!-- Custom scripts for this template -->
   <script src="static/{{ bootstrap_folder }}/js/freelancer.min.js"></script>
   <script src="static/js/custom.js"></script>
+
+  <script src="static/js/vue.js"></script>
+  <script src="static/js/vue-3d-model.js"></script>
+  <script>
+      new Vue({
+          el: '#app',
+          data: {
+            bgColor: '#18BC9C',
+          }
+      })
+  </script>
 
 </body>
 
