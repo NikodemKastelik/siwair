@@ -24,22 +24,46 @@ function doUpdate()
     })
 }
 
-var product = new Vue({
-    el: '#product',
-    data: {
-        dropStatus: null,
-    },
-    methods: {
-        onMouseUp(event) {
-            this.dropStatus = event;
+function updateProduct() {
+    product = createProduct();
+}
+
+function createProduct() {
+    $("#product_model").remove();
+    var element = document.createElement("model-stl");
+    element.setAttribute("id", "product_model");
+    element.setAttribute("src", "static/models/gear.stl");
+    element.setAttribute("v-on:on-mouseup", "onMouseUp");
+    element.setAttribute(":background-alpha", "0.0");
+    document.getElementById("product").appendChild(element);
+
+    var product_options = {
+        el: '#product',
+        data: {
+            dropStatus: null,
         },
-        statusGetAndClear(event) {
-            var retval = this.dropStatus;
-            this.dropStatus = null;
-            return retval;
+        methods: {
+            onMouseUp(event) {
+                this.dropStatus = event;
+                if (event)
+                {
+                    updateProduct();
+                }
+            },
+            statusGetAndClear(event) {
+                var retval = this.dropStatus;
+                this.dropStatus = null;
+                return retval;
+            },
+            getId () {
+                return this['$options'].el;
+            }
         }
-    }
-})
+    };
+
+    return new Vue(product_options);
+};
+var product =  createProduct();
 
 function partRevert(draggable, time_ms) {
     $(draggable).animate($(draggable).data('origPosition'), time_ms);
