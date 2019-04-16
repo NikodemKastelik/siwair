@@ -1,38 +1,38 @@
 .on-img-topright {
-  position: absolute;
-  top: 10%;
-  left: 82%;
-  transform: translate(-50%, -50%);
-  font-family: 'Montserrat';
-  font-weight: 900;
-  font-size: 1.5em;
-  color: white;
+    position: absolute;
+    top: 10%;
+    left: 82%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+    font-weight: 900;
+    font-size: 1.5em;
+    color: white;
 }
 
 .on-img-topleft {
-  position: absolute;
-  top: 10%;
-  left: 15%;
-  transform: translate(-50%, -50%);
-  font-family: 'Montserrat';
-  font-weight: 900;
-  font-size: 2em;
-  color: white;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+    font-weight: 900;
+    font-size: 2em;
+    color: white;
 }
 
 .status-dot {
-  position: absolute;
-  top: 25%;
-  left: 87%;
-  transform: translate(-50%, -50%);
-  height: 40px;
-  width: 40px;
-  background-color: grey;
-  border-radius: 50%;
-  display: inline-block;
-  border-width: 4px;
-  border-color: black;
-  border-style: solid;
+    position: absolute;
+    top: 25%;
+    left: 87%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+    width: 40px;
+    background-color: grey;
+    border-radius: 50%;
+    display: inline-block;
+    border-width: 4px;
+    border-color: black;
+    border-style: solid;
 }
 
 @media screen and (max-width: 600px) {
