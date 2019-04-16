@@ -24,136 +24,134 @@ function doUpdate()
     })
 }
 
-function updateProduct(modelProps) {
-    product = createProduct(modelProps);
-}
-
-function createProduct(modelProps) {
-    var modelName = "";
-    if ("body" in modelProps) {
-        modelName += "body";
-    }
-    if ("cover" in modelProps) {
-        modelName += "_cover";
-    }
-    if ("sleeve" in modelProps) {
-        modelName += "_sleeve";
-    }
-    if ("screw" in modelProps) {
-        modelName += "_screw" + modelProps["screw"].toString();
-    }
-
-    $("#product_model").remove();
-    var element = document.createElement("model-stl");
-    element.setAttribute("id", "product_model");
-    element.setAttribute("src", `static/models/${modelName}.stl`);
-    element.setAttribute("v-on:on-mouseup", "onMouseUp");
-    element.setAttribute(":background-alpha", "0.0");
-    element.setAttribute(":rotation", "rotation");
-    element.setAttribute(":scale", "{x: 0.8, y: 0.8, z: 0.8}");
-    document.getElementById("product").appendChild(element);
-
-    var product_options = {
-        el: '#product',
-        data: {
-            currentModel: modelProps,
+var product = new Vue ({
+    el: '#product',
+    data: {
+        currentModel: {"body" : true},
+        props: {
+            src: "/static/models/body.stl",
+            backgroundAlpha: 0.0,
             rotation: {
                 x: 0.6,
                 y: 0,
                 z: 0,
+            },
+            scale: {
+                x: 0.8,
+                y: 0.8,
+                z: 0.8
+            },
+        }
+    },
+    methods: {
+        onMouseUp(event) {
+            if (!g_currentDraggable || !event) {
+                g_dropStatus = false;
+                return;
+            }
+
+            var nextModel = this.updateModel(event.point.x,
+                                             -event.point.z,
+                                             g_currentDraggable);
+            if (nextModel) {
+                this.currentModel = nextModel;
+                this.buildModel(nextModel);
+                g_dropStatus = true;
+            }
+            else {
+                g_dropStatus = false;
             }
         },
-        methods: {
-            onMouseUp(event) {
-                if (!g_currentDraggable || !event) {
-                    g_dropStatus = false;
-                    return;
-                }
-
-                var nextModel = this.updateModel(event.point.x,
-                                                 -event.point.z,
-                                                 g_currentDraggable);
-                if (nextModel) {
-                    updateProduct(nextModel);
-                    g_dropStatus = true;
-                }
-                else {
-                    g_dropStatus = false;
-                }
-            },
-            getId () {
-                return this['$options'].el;
-            },
-            updateModel (px, py, droppedElement) {
-                var nextModel = null;
-                var currentModel = this.currentModel;
-                if (droppedElement === "#cover") {
-                    nextModel = this.handleDroppedCover(currentModel);
-                }
-                else if (droppedElement === "#sleeve") {
-                    nextModel = this.handleDroppedSleeve(currentModel);
-                }
-                else if (droppedElement === "#screw") {
-                    nextModel = this.handleDroppedScrew(px, py, currentModel);
-                }
-                return nextModel;
-            },
-            handleDroppedCover (currentModel) {
-                if ("cover" in currentModel) {
-                    return null;
-                }
-                else {
-                    currentModel["cover"] = true;
-                    return currentModel;
-                }
-            },
-            handleDroppedSleeve (currentModel) {
-                if ("sleeve" in currentModel) {
-                    return null;
-                }
-                else if (!("cover" in currentModel)) {
-                    return null;
-                }
-                else {
+        getId () {
+            return this['$options'].el;
+        },
+        buildModel (nextModel) {
+            var modelName = "";
+            if ("body" in nextModel) {
+                modelName += "body";
+            }
+            if ("cover" in nextModel) {
+                modelName += "_cover";
+            }
+            if ("sleeve" in nextModel) {
+                modelName += "_sleeve";
+            }
+            if ("screw" in nextModel) {
+                modelName += "_screw" + nextModel["screw"].toString();
+            }
+            this.props.src = `/static/models/${modelName}.stl`;
+        },
+        updateModel (px, py, droppedElement) {
+            var nextModel = null;
+            var currentModel = this.currentModel;
+            if (droppedElement === "#cover") {
+                nextModel = this.handleDroppedCover(currentModel);
+            }
+            else if (droppedElement === "#sleeve") {
+                nextModel = this.handleDroppedSleeve(currentModel);
+            }
+            else if (droppedElement === "#screw") {
+                nextModel = this.handleDroppedScrew(px, py, currentModel);
+            }
+            return nextModel;
+        },
+        handleDroppedCover (currentModel) {
+            if ("cover" in currentModel) {
+                return null;
+            }
+            else {
+                currentModel["cover"] = true;
+                return currentModel;
+            }
+        },
+        handleDroppedSleeve (currentModel) {
+            if ("sleeve" in currentModel) {
+                return null;
+            }
+            else if (!("cover" in currentModel)) {
+                return null;
+            }
+            else {
                 currentModel["sleeve"] = true;
-                    return currentModel;
-                }
-            },
-            handleDroppedScrew (px, py, currentModel) {
-                if (!("cover" in currentModel)) {
-                    return null;
-                }
+                return currentModel;
+            }
+        },
+        handleDroppedScrew (px, py, currentModel) {
+            if (!("cover" in currentModel)) {
+                return null;
+            }
 
-                var new_screw = null;
-                if (!("screw" in currentModel)) {
-                    new_screw = 1;
+            var new_screw = null;
+            if (!("screw" in currentModel)) {
+                new_screw = 1;
+            }
+            else if (currentModel["screw"] === 1) {
+                /* Check if diagonal or by side */
+                if (px > 0 && py < 0) {
+                    new_screw = 4;
                 }
-                else if (currentModel["screw"] === 1) {
-                    /* Check if diagonal or by side */
-                    if (px > 0 && py < 0) {
-                        new_screw = 4;
-                    }
-                    else {
-                        new_screw = 2;
-                    }
+                else {
+                    new_screw = 2;
                 }
-                else if (currentModel["screw"] === 2 ||
-                         currentModel["screw"] === 4) {
-                    new_screw = 8;
-                }
-                else if (currentModel["screw"] === 8) {
-                    new_screw = 16;
-                }
+            }
+            else if (currentModel["screw"] === 2 ||
+                     currentModel["screw"] === 4) {
+                new_screw = 8;
+            }
+            else if (currentModel["screw"] === 8) {
+                new_screw = 16;
+            }
 
+            if (new_screw) {
                 currentModel["screw"] = new_screw;
                 return currentModel;
             }
+            else {
+                return null;
+            }
         }
-    };
-
-    return new Vue(product_options);
-};
-var product =  createProduct({"body" : true});
+    }
+});
 
 var g_dropStatus = false;
 var g_currentDraggable = null;
@@ -163,8 +161,6 @@ const draggableItem = {
         events: "all",
         default_scale: 0.8,
         props: {
-            width: 120,
-            height: 120,
             backgroundAlpha: 0.0,
             controllable: false,
             rotation: {
