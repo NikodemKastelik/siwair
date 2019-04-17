@@ -29,7 +29,7 @@ var product = new Vue ({
     data: {
         currentModel: {"body" : true},
         props: {
-            src: "/static/models/body.stl",
+            src: "/static/models/body.STL",
             backgroundAlpha: 0.0,
             rotation: {
                 x: 0.6,
@@ -79,7 +79,7 @@ var product = new Vue ({
             if ("screw" in nextModel) {
                 modelName += "_screw" + nextModel["screw"].toString();
             }
-            this.props.src = `/static/models/${modelName}.stl`;
+            this.props.src = `/static/models/${modelName}.STL`;
         },
         updateModel (px, py, droppedElement) {
             var nextModel = null;
@@ -259,7 +259,7 @@ var sleeve = new Vue({
     el: '#sleeve',
     data: {
         props: {
-            src: "static/models/sleeve.stl"
+            src: "static/models/sleeve.STL"
         }
     }
 })
@@ -269,7 +269,7 @@ var cover = new Vue({
     el: '#cover',
     data: {
         props: {
-            src: "static/models/cover.stl"
+            src: "static/models/cover.STL"
         }
     }
 })
@@ -279,7 +279,7 @@ var screw = new Vue({
     el: '#screw',
     data: {
         props: {
-            src: "static/models/screw_angle.stl",
+            src: "static/models/screw_angle.STL",
         },
     },
 })
