@@ -25,7 +25,7 @@ def get_status():
 
 @app.route('/')
 def root():
-    with open("static/contents.json") as fd:
+    with open("static/contents.json", encoding='utf-8') as fd:
         contents = json.load(fd)
     return render_template('index.html',
                            bootstrap_folder="startbootstrap-freelancer",
