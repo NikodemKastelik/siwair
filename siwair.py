@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import Response
 from flask import jsonify
+from flask import request
 import json
 import sys
 
@@ -31,3 +32,9 @@ def root():
                            bootstrap_folder="startbootstrap-freelancer",
                            contents=contents)
 
+@app.route('/getorder', methods=['POST'])
+def getorder():
+    print (request.is_json)
+    content = request.get_json()
+    print (content)
+    return 'JSON posted'

@@ -28,6 +28,7 @@
 
   <!-- CSS custom overrides -->
   <link href="static/css/custom.css" rel="stylesheet">
+  <link href="static/css/cart.css" rel="stylesheet">
 
 </head>
 
@@ -210,6 +211,47 @@
             <model-stl v-bind="props" @on-load="onLoad" ></model-stl>
           </div>
         </div>
+      </div>
+      <div class="row" >
+        <div class="cart-buttons-container mt-3 d-flex justify-content-between center">
+          <button class="cart-add-item-button cart-button btn text-uppercase btn-outline-light">
+            <h5 class="text-center text-uppercase center"> Dodaj do zamówienia </h4>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="bg-primary text-white mb-0">
+    <div class="container">
+      <div id="cart" class="cart">
+        <!-- cart item -->
+        <div class="cart-item d-flex align-items-center my-3 cart-empty">
+          <h4 class="text-center text-uppercase text-white center"> Brak produktów w zamówieniu </h4>
+        </div>
+        <!--end of  cart item -->
+      </div>
+      <!-- cart total -->
+      <div class="cart-total-container d-flex justify-content-around text-capitalize mt-5">
+        <h5>Suma</h5>
+        <h5> PLN <strong id="cart-total" class="font-weight-bold">10.00</strong> </h5>
+      </div>
+      <!--end cart total -->
+      <!-- cart buttons -->
+      <div class="cart-buttons-container mt-3 d-flex justify-content-between flex-wrap">
+        <div class="cart-buttons-container mt-3 d-flex justify-content-between col-xs-12 col-md-6">
+          <button id="empty-cart" class="cart-button btn text-uppercase btn-outline-light center">
+            <h5 class="text-center text-uppercase center"> Usuń zawartość </h4>
+          </button>
+        </div>
+        <div class="cart-buttons-container mt-3 d-flex justify-content-between col-xs-12 col-md-6">
+          <button id="confirm-order" class="cart-button btn text-uppercase btn-outline-light center">
+            <h5 class="text-center text-uppercase center"> Potwierdź zamówienie </h4>
+          </button>
+        </div>
+      </div>
+      <!--end of  cart buttons -->
     </div>
   </section>
 
@@ -379,7 +421,7 @@
   <script src="static/js/vue-3d-model.js"></script>
   <script src="static/js/draganddrop.js"></script>
   <script src="static/js/custom.js"></script>
-
+  <script src="static/js/cart.js"></script>
 </body>
 
 </html>
