@@ -189,7 +189,7 @@ const draggableItem = {
             g_currentDraggable = this.getId();
         },
         onDragEnd (event, draggable) {
-            setTimeout(this.verifyDrop, 50);
+            setTimeout(this.verifyDrop, 200);
         },
         init (elementId) {
             $(elementId).draggable({
@@ -211,7 +211,7 @@ const draggableItem = {
         squeeze () {
             var new_scale = this.props.scale.x - 0.05;
             this.scaleSet(new_scale);
-            if (new_scale > 0) {
+            if (new_scale > 0.2) {
                 requestAnimationFrame( this.squeeze );
             }
             else {
