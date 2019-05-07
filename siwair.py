@@ -34,7 +34,6 @@ def root():
 
 @app.route('/getorder', methods=['POST'])
 def getorder():
-    print (request.is_json)
     content = request.get_json()
-    print (content)
+    plcmngr.addOrder(content)
     return 'JSON posted'

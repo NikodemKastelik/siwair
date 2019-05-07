@@ -1,4 +1,5 @@
 from socket_client_manager import SocketClientManager
+from order_list import OrderList
 import time
 import threading
 
@@ -14,11 +15,16 @@ class PlcMasterManager:
     STATIONS_NAMES = ["ST10", "ST20", "ST30", "ST40", "ST50", "ST60", "ST70", "ST80"]
     STATIONS_STATUSES_NAMES = ["Empty", "Ongoing", "Error"]
 
+    EMPTY_CURRENT_ORDER = {}
+
     def __init__(self, plc_ip, port):
         self._sock_mngr = SocketClientManager(plc_ip, port)
         self._response_thread = None
         self._pinger_thread = None
         self._running = threading.Event()
+        self._order_list = OrderList()
+        self._current_order = self.EMPTY_CURRENT_ORDER
+        self._order_progress = 0
 
         self._stations_statuses = {}
         for station_name in self.STATIONS_NAMES:
@@ -65,8 +71,21 @@ class PlcMasterManager:
                 self._sock_mngr.send(self.CMD_CODE_GET_STATUS)
             time.sleep(self.STATUS_PINGER_TIMEOUT)
 
+    def addOrder(self, order):
+            self._order_list.append(order)
+
     def getStatuses(self):
         return self._stations_statuses
+
+    def getOrderBracket(self):
+        return self._order_list.get()
+
+    def getCurrentOrder(self):
+        if self._current_order == self.EMPTY_CURRENT_ORDER:
+            return self.EMPTY_CURRENT_ORDER
+        else:
+            self._current_order['progress'] = str(self._order_progress)
+            return self._current_order
 
     def isPlcConnected(self):
         return self._sock_mngr.isConnected()

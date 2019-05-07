@@ -45,7 +45,7 @@ class SocketManager:
             if sock is not None:
                 sock.close()
 
-    def isConncted(self):
+    def isConnected(self):
         return self._connected
 
     def start(self):

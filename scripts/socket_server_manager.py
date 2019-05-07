@@ -15,7 +15,7 @@ class SocketServerManager(SocketManager):
         server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server_sock.bind((self._server_ip, self._port))
-        server_sock.listen()
+        server_sock.listen(5)
         self._print("Listening on {}:{}".format(self._server_ip, self._port))
         client_sock = None
         while self._running.is_set():
