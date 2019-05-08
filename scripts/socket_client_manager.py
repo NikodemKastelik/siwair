@@ -4,11 +4,8 @@ from socket_manager import SocketManager
 
 class SocketClientManager(SocketManager):
 
-    def __init__(self, server_ip, port):
-        super(SocketClientManager, self).__init__(server_ip, port)
-
-    def _print(self, string):
-        print("SocketClientManager: {}".format(string))
+    def __init__(self, server_ip, port, *args, **kwargs):
+        super(SocketClientManager, self).__init__(server_ip, port, *args, **kwargs)
 
     def _connect(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

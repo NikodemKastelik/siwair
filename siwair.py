@@ -12,10 +12,14 @@ from plc_master_manager import PlcMasterManager
 plcmngr = None
 app = Flask(__name__)
 
+MASTER_PLC_IP = "localhost"
+TX_PORT = 4000
+RX_PORT = 4040
+
 @app.before_first_request
 def setup():
     global plcmngr
-    plcmngr = PlcMasterManager("localhost", 4000)
+    plcmngr = PlcMasterManager(MASTER_PLC_IP, TX_PORT, RX_PORT)
     plcmngr.start()
 
 @app.route("/getstatus", methods = ["get"])

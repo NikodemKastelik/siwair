@@ -5,11 +5,8 @@ from socket_manager import SocketManager
 
 class SocketServerManager(SocketManager):
 
-    def __init__(self, server_ip, port):
-        super(SocketServerManager, self).__init__(server_ip, port)
-
-    def _print(self, string):
-        print("SocketServerManager: {}".format(string))
+    def __init__(self, server_ip, port, *args, **kwargs):
+        super(SocketServerManager, self).__init__(server_ip, port, *args, **kwargs)
 
     def _connect(self):
         server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

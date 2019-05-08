@@ -50,6 +50,12 @@ class Order:
     def getProducts(self):
         return self._products
 
+    def getEncodedProducts(self):
+        encoded = []
+        for product in self._products:
+            encoded.append(product.getEncodedProduct())
+        return encoded
+
 class OrderList:
     def __init__(self):
         self._queue = OrderedDict()
@@ -82,13 +88,18 @@ class OrderList:
             chunks.append(chunk)
         return chunks
 
+    def _buildEncodedOrder(self, id, order):
+        encoded = {'id': str(id)}
+        encoded['contents'] = order.getEncodedProducts()
+        return encoded
+
     def append(self, encoded_products):
         products = []
         for prod in encoded_products:
             products.append(Product(prod))
 
         #check if can append some products to last order in queue
-        if len(self._queue):
+        if not self.isEmpty():
             last_order = self._queue[str(self._id)]
             diff = Order.MAX_PRODUCTS_PER_ORDER - last_order.getProductCount()
             idx = 0
@@ -107,11 +118,14 @@ class OrderList:
         for products_chunk in chunks:
             self._queue[str(self._getNextId())] = Order(products_chunk)
 
+    def isEmpty(self):
+        return not len(self._queue)
+
+    def getById(self, id):
+       return self._buildEncodedOrder(id, self._queue[str(id)])
+
     def removeById(self, id):
-        try:
-            del self._queue[str(id)]
-        except:
-            print("No such ID {}".format(id))
+        del self._queue[str(id)]
 
     def print(self):
         for id in self._queue:
@@ -120,16 +134,8 @@ class OrderList:
                 print("Amount {}: {}".format(product.getCount(), product.getRecipe()))
 
     def pop(self):
-        order = self._queue.popitem(last=False)
-        return (order[0], order[1].getProducts())
+        id, order = self._queue.popitem(last=False)
+        return self._buildEncodedOrder(id, order)
 
     def get(self):
-        queue = []
-        for id in self._queue:
-            order = {'id': str(id)}
-            encoded_products = []
-            for product in self._queue[id].getProducts():
-                encoded_products.append(product.getEncodedProduct())
-            order['contents'] = encoded_products
-            queue.append(order)
-        return queue
+        return [self.getById(id) for id in self._queue]

@@ -1,15 +1,9 @@
 function getStatusColor(state)
 {
     var color = "grey";
-    if (state["Empty"]) {
-      color = "white";
-    }
-    if (state["Ongoing"]) {
-      color = "green";
-    }
-    if (state["Error"]) {
-      color = "red";
-    }
+    if      (state === "Empty")   color = "white";
+    else if (state === "Ongoing") color = "green";
+    else if (state === "Error")   color = "red";
     return color;
 }
 

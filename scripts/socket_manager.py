@@ -8,7 +8,7 @@ class SocketManager:
 
     CONNECTION_TIMEOUT = 1.0
 
-    def __init__(self, server_ip, port):
+    def __init__(self, server_ip, port, recv_per_access=1024, name="SocketManager"):
         self._server_ip = server_ip
         self._port = port
         self._connected = False
@@ -16,9 +16,11 @@ class SocketManager:
         self._running = threading.Event()
         self._read_queue = queue.Queue()
         self._write_queue = queue.Queue()
+        self._recv_per_access = recv_per_access
+        self._name = name
 
     def _print(self, string):
-        raise NotImplementedError
+        print("{}: {}".format(self._name, string))
 
     def _connect(self):
         raise NotImplementedError
@@ -30,7 +32,7 @@ class SocketManager:
             while self._running.is_set():
                 readable, writable, _ = select.select([sock], [sock], [], 0.1)
                 if readable:
-                    readout = sock.recv(1024)
+                    readout = sock.recv(self._recv_per_access)
                     if readout:
                         self._print("Got data: {}".format(readout))
                         self._read_queue.put(readout)
