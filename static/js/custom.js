@@ -99,9 +99,6 @@ var product = new Vue ({
             if ("sleeve" in currentModel) {
                 return null;
             }
-            else if (!("cover" in currentModel)) {
-                return null;
-            }
             else {
                 currentModel["sleeve"] = true;
                 return currentModel;
@@ -118,7 +115,7 @@ var product = new Vue ({
             }
             else if (currentModel["screw"] === 1) {
                 /* Check if diagonal or by side */
-                if (px > 0 && py < 0) {
+                if ((px > 0) && (Math.abs(py) < px)) {
                     new_screw = 4;
                 }
                 else {
@@ -181,6 +178,7 @@ const draggableItem = {
         init (elementId) {
             $(elementId).draggable({
                 enable : true,
+                scroll : false,
                 start  : this.onDragStart,
                 update : this.onDragEnd,
             });
