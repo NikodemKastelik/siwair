@@ -1,0 +1,63 @@
+# Order queue:
+# It is an array of dictionaries. Each dictionary contains keys 'id' and 'contents'.
+# This pair of keys describes single order. Value of the 'id' key represents order unique identifier.
+# It is a number and its type is a String. Value of the 'contents' key is the array of dictionaries.
+# Each entry in this array represents single product. Each product consists of 'quantity' and 'recipe' key.
+# Value of the 'quantity' key equals to amount of the products specified by the value of the 'recipe' key.
+# First key is a number and its type is a String, while the second one is a string and its type is also a String.
+# There are maximum 6 products in a single order, which means that sum of all values of 'quantity' keys
+# across single 'contents' array is lesser or equal to 6.
+[
+  {
+    'id': '<idx 1>'
+    'contents':
+    [
+        {'quantity': '<amount>', 'recipe': '<encoded product 1>'},
+        {'quantity': '<amount>', 'recipe': '<encoded product 2>'},
+        {'quantity': '<amount>', 'recipe': '<encoded product 3>'}
+    ]
+  },
+  {
+    'id': '<idx 2>'
+    'contents':
+    [
+        {'quantity': '<amount>', 'recipe': '<encoded product 1>'},
+        {'quantity': '<amount>', 'recipe': '<encoded product 2>'},
+    ]
+  }
+]
+
+# Encoded product format:
+
+F4.0_BCxy
+  ^  ^^^^
+  1  2345
+
+# 1) F4.0_ - prefix. Always the same.
+# 2) B     - marks that body is present. It is mandatory setting.
+# 3) C     - marks that cover is present. It is mandatory setting.
+# 4) x     - marks if sleeve is present. Either 'S' or '0' (zero).
+# 5) y     - marks screw configuration. Can be one of values:
+#            a) '0'  - no screw
+#            b) '1'  - one screw
+#            c) '2'  - two screws positioned near each other
+#            d) '4'  - two screws positioned diagonally
+#            e) '8'  - three screws
+#            f) '16' - four screws ('y' value consist of two digits then)
+
+# Current order, processed by Master PLC:
+# It is a dictionary, containing keys 'id', 'contents' and 'progress'.
+# Meaning of the first two keys is same as in Order queue.
+# Value of the 'progress' key represents progress of the order currently processed by Master PLC.
+# It it a number and its type is a String.
+{
+    'id': '<idx>'
+    'contents':
+    [
+        {'quantity': '<amount>', 'recipe': '<encoded product 1>'},
+        {'quantity': '<amount>', 'recipe': '<encoded product 2>'},
+        {'quantity': '<amount>', 'recipe': '<encoded product 3>'},
+        {'quantity': '<amount>', 'recipe': '<encoded product 4>'}
+    ],
+    'progress': '<0-100%>'
+}
