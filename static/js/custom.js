@@ -89,6 +89,10 @@ var product = new Vue ({
             }
             return nextModel;
         },
+        resetModel () {
+            this.currentModel = {"body" : true};
+            this.buildModel(this.currentModel);
+        },
         handleDroppedCover (currentModel) {
             if ("cover" in currentModel) {
                 return null;
@@ -279,7 +283,12 @@ var screw = new Vue({
 })
 
 window.onload = function() {
-    var ivstor = window.setInterval(function() { doUpdate()}, 500);
+    var ivstor = window.setInterval(function() {
+            doUpdate();
+        },
+        500);
+
+    document.getElementById("model-reset-button").addEventListener("click", product.resetModel);
 }
 
 document.addEventListener("touchend", function(evt){
