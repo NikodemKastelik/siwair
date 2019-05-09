@@ -218,7 +218,7 @@ function setInputFilter(textbox, inputFilter) {
       //alert(order);
       // AJAX used to send data to the server
       $.ajax({
-                    url:"/getorder",
+                    url:"/setorder",
                     type: "POST",
                     contentType:"application/json",
                     dataType:"json",
@@ -227,3 +227,22 @@ function setInputFilter(textbox, inputFilter) {
     });
   });
 }());
+
+
+// ========== status queries ==========
+function getCurrentOrder() {
+    $.getJSON("/getcurrentorder").done(function(data) {
+        console.log(data)
+    });
+}
+
+function getOrderQueue() {
+    $.getJSON("/getorderqueue").done(function(data) {
+        console.log(data)
+    });
+}
+
+$(function() {
+    g_statusquery.register(getCurrentOrder);
+    g_statusquery.register(getOrderQueue);
+});

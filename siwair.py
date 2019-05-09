@@ -23,8 +23,20 @@ def setup():
     plcmngr.start()
 
 @app.route("/getstatus", methods = ["get"])
-def get_status():
+def getStatus():
     data = plcmngr.getStatuses()
+    resp = Response(json.dumps(data), status=200, mimetype="application/json")
+    return resp
+
+@app.route("/getcurrentorder", methods = ["get"])
+def getCurrentOrder():
+    data = plcmngr.getCurrentOrder()
+    resp = Response(json.dumps(data), status=200, mimetype="application/json")
+    return resp
+
+@app.route("/getorderqueue", methods = ["get"])
+def getOrderQueue():
+    data = plcmngr.getOrderBracket()
     resp = Response(json.dumps(data), status=200, mimetype="application/json")
     return resp
 
@@ -36,8 +48,8 @@ def root():
                            bootstrap_folder="startbootstrap-freelancer",
                            contents=contents)
 
-@app.route('/getorder', methods=['POST'])
-def getorder():
+@app.route('/setorder', methods=['POST'])
+def setOrder():
     content = request.get_json()
     plcmngr.addOrder(content)
     return 'JSON posted'

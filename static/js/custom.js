@@ -1,22 +1,15 @@
-function getStatusColor(state)
-{
-    var color = "grey";
-    if      (state === "Empty")   color = "white";
-    else if (state === "Ongoing") color = "green";
-    else if (state === "Error")   color = "red";
-    return color;
-}
-
-function doUpdate()
-{
-    $.getJSON("/getstatus").done(function(data)
-    {
+function doStationsUpdate() {
+    $.getJSON("/getstatus").done(function(data) {
         for (var station in data) {
             var state = data[station]
-            $('#status_' + station).css('background-color', getStatusColor(state));
+            var color = "grey";
+            if      (state === "Empty")   color = "white";
+            else if (state === "Ongoing") color = "green";
+            else if (state === "Error")   color = "red";
+            $('#status_' + station).css('background-color', color);
         }
-    })
-}
+    });
+};
 
 var product = new Vue ({
     el: '#product',
@@ -282,14 +275,10 @@ var screw = new Vue({
     },
 })
 
-window.onload = function() {
-    var ivstor = window.setInterval(function() {
-            doUpdate();
-        },
-        500);
-
-    document.getElementById("model-reset-button").addEventListener("click", product.resetModel);
-}
+$(function() {
+    $("#model-reset-button").click(product.resetModel);
+    g_statusquery.register(doStationsUpdate)
+});
 
 document.addEventListener("touchend", function(evt){
     var touches = evt.changedTouches,

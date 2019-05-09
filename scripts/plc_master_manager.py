@@ -27,6 +27,7 @@ class PlcMasterManager:
         self._order_list = OrderList()
         self._current_order = self.EMPTY_CURRENT_ORDER
         self._order_progress = 0
+        self._lock = threading.Lock()
 
         self._stations_statuses = {}
         for station_name in self.STATIONS_NAMES:
@@ -132,6 +133,9 @@ class PlcMasterManager:
                 self._parseResponse(data)
                 if not self._isPlcBusy():
                     self._sendNextOrder()
+                if self._order_list.isEmpty() and self._order_progress == 100:
+                    self._current_order = self.EMPTY_CURRENT_ORDER
+                    self._order_progress = 0
             time.sleep(0.05)
 
     def _statusPingerLoop(self):
@@ -143,20 +147,24 @@ class PlcMasterManager:
             time.sleep(self.STATUS_PINGER_TIMEOUT)
 
     def addOrder(self, order):
+        with self._lock:
             self._order_list.append(order)
 
     def getStatuses(self):
-        return self._stations_statuses
+        with self._lock:
+            return self._stations_statuses
 
     def getOrderBracket(self):
-        return self._order_list.get()
+        with self._lock:
+            return self._order_list.get()
 
     def getCurrentOrder(self):
-        if self._current_order == self.EMPTY_CURRENT_ORDER:
-            return self.EMPTY_CURRENT_ORDER
-        else:
-            self._current_order['progress'] = str(self._order_progress)
-            return self._current_order
+        with self._lock:
+            if self._current_order == self.EMPTY_CURRENT_ORDER:
+                return self.EMPTY_CURRENT_ORDER
+            else:
+                self._current_order['progress'] = str(self._order_progress)
+                return self._current_order
 
     def isPlcConnected(self):
         return self._sock_mngr_rx.isConnected() and self._sock_mngr_tx.isConnected()
