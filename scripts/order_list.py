@@ -5,6 +5,15 @@ class Product:
     def __init__(self, encoded_product):
         self._encoded_product = encoded_product
 
+    def addCount(self, count):
+        curr_count = self.getCount()
+        self._encoded_product['quantity'] = str(curr_count + count)
+
+    def removeCount(self, count):
+        curr_count = self.getCount()
+        assert(curr_count >= count)
+        self._encoded_product['quantity'] = str(curr_count - count)
+
     def getCount(self):
         return int(self._encoded_product['quantity'])
 
@@ -45,7 +54,17 @@ class Order:
 
     def addProducts(self, new_products):
         assert(self.getProductCount() + self.calcProductAmount(new_products) <= self.MAX_PRODUCTS_PER_ORDER)
-        self._products += new_products
+
+        for old_product in self._products:
+            for new_product in new_products:
+                if old_product.getRecipe() == new_product.getRecipe():
+                    count = new_product.getCount()
+                    old_product.addCount(count)
+                    new_product.removeCount(count)
+
+        for product in new_products:
+            if product.getCount():
+                self._products.append(product)
 
     def getProducts(self):
         return self._products
