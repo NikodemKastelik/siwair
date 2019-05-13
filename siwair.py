@@ -66,7 +66,6 @@ def setOrder():
 
 @app.route('/deleteorder', methods=['POST'])
 def deleteorder():
-    print (request.is_json)
-    content = request.get_json()
-    print (content)
+    id = request.get_json()
+    plcmngr.removeOrder(id)
     return 'JSON posted'

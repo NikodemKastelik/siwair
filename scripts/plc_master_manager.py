@@ -167,6 +167,10 @@ class PlcMasterManager:
                 self._current_order['progress'] = str(self._order_progress)
                 return self._current_order
 
+    def removeOrder(self, id):
+        with self._lock:
+            self._order_list.removeById(id)
+
     def isPlcConnected(self):
         return self._sock_mngr_rx.isConnected() and self._sock_mngr_tx.isConnected()
 
