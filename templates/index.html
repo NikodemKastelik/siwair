@@ -29,6 +29,7 @@
   <!-- CSS custom overrides -->
   <link href="static/css/custom.css" rel="stylesheet">
   <link href="static/css/cart.css" rel="stylesheet">
+  <link href="static/css/orderstatus.css" rel="stylesheet">
 
 </head>
 
@@ -262,6 +263,32 @@
     </div>
   </section>
 
+  <!-- Order Status Section -->
+  <section class="bg-primary text-white mb-0">
+    <div class="container">
+      <div id="order-status-current" class="order-status-current">
+        <!-- cart item -->
+        <div class="order-status-current-item d-flex align-items-center my-3 order-status-current-empty">
+          <h4 class="text-center text-uppercase text-white center"> Brak zamówień w produkcji </h4>
+        </div>
+        <!--end of  cart item -->
+      </div>
+      <div id="order-status" class="order-status">
+        <!-- cart item -->
+        <div class="order-status-item d-flex align-items-center my-3 order-status-empty">
+          <h4 class="text-center text-uppercase text-white center"> Brak zamówień w kolejce </h4>
+        </div>
+        <!--end of  cart item -->
+      </div>
+      <!-- cart total -->
+      <div class="order-status-total-container d-flex justify-content-around text-capitalize mt-5">
+        <h5>Suma</h5>
+        <h5> Sztuk: <strong id="order-status-total" class="font-weight-bold">10.00</strong> </h5>
+      </div>
+      <!--end cart total -->
+    </div>
+  </section>
+
   <!-- Footer -->
   <div class="copyright py-4 text-center text-white">
     <div class="container">
@@ -430,6 +457,7 @@
   <script src="static/js/statusquery.js"></script>
   <script src="static/js/custom.js"></script>
   <script src="static/js/cart.js"></script>
+  <script src="static/js/orderstatus.js"></script>
 </body>
 
 </html>

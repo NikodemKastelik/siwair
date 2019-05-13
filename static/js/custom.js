@@ -275,7 +275,9 @@ var screw = new Vue({
 
 $(function() {
     $("#model-reset-button").click(product.resetModel);
-    g_statusquery.register(doStationsUpdate)
+    g_statusquery.register(doStationsUpdate);
+    g_statusquery.register(orderStatusUpdate);
+    g_statusquery.register(orderCurrentStatusUpdate)
 });
 
 document.addEventListener("touchend", function(evt){

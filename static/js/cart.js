@@ -185,7 +185,7 @@ function setInputFilter(textbox, inputFilter) {
       const image = document.querySelectorAll(".cart")[0].lastChild.querySelectorAll(".cart-item-image")[0];
       image.addEventListener("click", function(showEvent) {
         let show = showEvent.target;
-        updateProduct(modelProps)
+        product.buildModel(modelProps)
       });
   });
 });
@@ -213,7 +213,6 @@ function setInputFilter(textbox, inputFilter) {
     btn.addEventListener("click", function(confirmEvent) {
       var order = "";
       var orderObjArr = [];
-      console.log(document.querySelectorAll(".cart")[0].children);
       Array.from(document.querySelectorAll(".cart")[0].children).forEach(function(cartItem) {
         if (!cartItem.classList.contains("cart-empty")){
           order += cartItem.querySelectorAll("#cart-item-title")[0].innerText + ' ' + cartItem.querySelectorAll("#quantity")[0].value.toString() + '\n';
@@ -237,21 +236,3 @@ function setInputFilter(textbox, inputFilter) {
   });
 }());
 
-
-// ========== status queries ==========
-function getCurrentOrder() {
-    $.getJSON("/getcurrentorder").done(function(data) {
-        console.log(data)
-    });
-}
-
-function getOrderQueue() {
-    $.getJSON("/getorderqueue").done(function(data) {
-        console.log(data)
-    });
-}
-
-$(function() {
-    g_statusquery.register(getCurrentOrder);
-    g_statusquery.register(getOrderQueue);
-});

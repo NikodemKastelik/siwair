@@ -18,7 +18,7 @@ plcmngr = None
 
 app = Flask(__name__)
 
-MASTER_PLC_IP = "10.10.135.80"
+MASTER_PLC_IP = "localhost"
 TX_PORT = 2099
 RX_PORT = 2098
 
@@ -62,4 +62,11 @@ def root():
 def setOrder():
     content = request.get_json()
     plcmngr.addOrder(content)
+    return 'JSON posted'
+
+@app.route('/deleteorder', methods=['POST'])
+def deleteorder():
+    print (request.is_json)
+    content = request.get_json()
+    print (content)
     return 'JSON posted'
