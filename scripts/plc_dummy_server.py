@@ -7,7 +7,7 @@ from plc_master_manager import PlcMasterManager
 from order_list import Order
 from socket_server_manager import SocketServerManager
 
-LAST_STATION_NUM = 70
+LAST_STATION_NUM = 60
 STATION_INTERVAL = 10
 STATION_COUNT = int(LAST_STATION_NUM / STATION_INTERVAL)
 
@@ -210,8 +210,8 @@ class DummyMasterPlc:
 
 
 if __name__ == "__main__":
-    port_tx = 4040
-    port_rx = 4000
+    port_tx = 2098
+    port_rx = 2099
     server  = "localhost"
 
     dummyplc = DummyMasterPlc(server, port_tx, port_rx)

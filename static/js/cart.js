@@ -52,6 +52,15 @@ function setInputFilter(textbox, inputFilter) {
   addCartBtn.forEach(function(btn){
     btn.addEventListener("click", function(event) {
 
+      if (!("cover" in product.currentModel)) {
+        alert("Produkt musi mieć pokrywę")
+        return;
+      }
+      else if (!("screw" in product.currentModel)) {
+        alert("Produkt musi mieć przynajmniej jedną śrubę")
+        return;
+      }
+
       // clear empty element
       document.querySelectorAll(".cart-empty").forEach(function(element) {
         element.closest(".cart").removeChild(element);

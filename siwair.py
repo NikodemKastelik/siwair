@@ -5,22 +5,32 @@ from flask import jsonify
 from flask import request
 import json
 import sys
+import atexit
 
 sys.path.insert(0, "scripts/")
 from plc_master_manager import PlcMasterManager
 
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
 plcmngr = None
+
 app = Flask(__name__)
 
-MASTER_PLC_IP = "localhost"
-TX_PORT = 4000
-RX_PORT = 4040
+MASTER_PLC_IP = "10.10.135.80"
+TX_PORT = 2099
+RX_PORT = 2098
+
+def cleanup(thisplc):
+    thisplc.stop()
 
 @app.before_first_request
 def setup():
     global plcmngr
     plcmngr = PlcMasterManager(MASTER_PLC_IP, TX_PORT, RX_PORT)
     plcmngr.start()
+    atexit.register(lambda: cleanup(plcmngr))
 
 @app.route("/getstatus", methods = ["get"])
 def getStatus():

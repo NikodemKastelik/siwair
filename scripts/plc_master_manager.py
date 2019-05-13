@@ -8,8 +8,8 @@ class PlcMasterManager:
 
     STATUS_PINGER_TIMEOUT = 1.0
 
-    CMD_CODE_GET_STATUS = (0xAA).to_bytes(1, byteorder = 'big')
-    CMD_CODE_SET_ORDER  = (0xDD).to_bytes(1, byteorder = 'big')
+    CMD_CODE_GET_STATUS = (0x01).to_bytes(1, byteorder = 'big')
+    CMD_CODE_SET_ORDER  = (0x02).to_bytes(1, byteorder = 'big')
 
     CMD_RX_FRAME_LEN = 20 # 6 + 6 + 6 + 1 + 1
     CMD_TX_FRAME_LEN = 14 # 1 + 1 + 6x2
@@ -87,7 +87,7 @@ class PlcMasterManager:
 
         for byte in status_bytes:
             station_idx = int(byte / 10) - 1
-            if station_idx >= 0:
+            if 6 >= station_idx >= 0:
                 station_name = self.STATIONS_NAMES[station_idx]
                 self._stations_statuses[station_name] = "Ongoing"
 
@@ -113,7 +113,7 @@ class PlcMasterManager:
             self._print("Cannot parse response: {}".format(data))
 
     def _isPlcBusy(self):
-        if self._current_order == self.EMPTY_CURRENT_ORDER or self._order_progress == 100:
+        if self._current_order == self.EMPTY_CURRENT_ORDER or self._order_progress >= 100:
             return False
         else:
             return True
@@ -133,9 +133,10 @@ class PlcMasterManager:
                 self._parseResponse(data)
                 if not self._isPlcBusy():
                     self._sendNextOrder()
-                if self._order_list.isEmpty() and self._order_progress == 100:
+                if self._order_list.isEmpty() and self._order_progress >= 100:
                     self._current_order = self.EMPTY_CURRENT_ORDER
                     self._order_progress = 0
+
             time.sleep(0.05)
 
     def _statusPingerLoop(self):
