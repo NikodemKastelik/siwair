@@ -35,6 +35,10 @@
     border-style: solid;
 }
 
+/*section#order {
+    padding: 3rem 0 0 0;
+}*/
+
 @media screen and (max-width: 600px) {
     div.container h1.text-uppercase {
         font-size: 35px;

@@ -41,7 +41,6 @@ var product = new Vue ({
                                              -event.point.z,
                                              g_currentDraggable);
             if (nextModel) {
-                this.currentModel = nextModel;
                 this.buildModel(nextModel);
                 g_dropStatus = true;
             }
@@ -67,6 +66,7 @@ var product = new Vue ({
                 modelName += "_screw" + nextModel["screw"].toString();
             }
             this.props.src = `/static/models/${modelName}.STL`;
+            this.currentModel = nextModel;
         },
         updateModel (px, py, droppedElement) {
             var nextModel = null;

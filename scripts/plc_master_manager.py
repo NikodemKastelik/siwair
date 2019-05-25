@@ -41,7 +41,7 @@ class PlcMasterManager:
         if part[2] == "S":
             return 1
         else:
-            return 0
+            return 2
 
     def _getScrewConfig(self, product):
         part = product['recipe'].split("_")[1]

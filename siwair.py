@@ -18,7 +18,7 @@ plcmngr = None
 
 app = Flask(__name__)
 
-MASTER_PLC_IP = "localhost"
+MASTER_PLC_IP = "10.10.135.80"
 TX_PORT = 2099
 RX_PORT = 2098
 

@@ -186,6 +186,7 @@ function setInputFilter(textbox, inputFilter) {
       image.addEventListener("click", function(showEvent) {
         let show = showEvent.target;
         product.buildModel(modelProps)
+        document.getElementById("order").scrollIntoView({behavior: "smooth"});
       });
   });
 });

@@ -32,7 +32,11 @@ class SocketManager:
             while self._running.is_set():
                 readable, writable, _ = select.select([sock], [sock], [], 0.1)
                 if readable:
-                    readout = sock.recv(self._recv_per_access)
+                    try:
+                        readout = sock.recv(self._recv_per_access)
+                    except:
+                        self._print("Connection lost")
+                        break
                     if readout:
                         self._print("Got data: {}".format(readout))
                         self._read_queue.put(readout)
@@ -41,7 +45,11 @@ class SocketManager:
                         break
                 if writable and not self._write_queue.empty():
                     data_to_write = self._write_queue.get()
-                    sock.send(data_to_write)
+                    try:
+                        sock.send(data_to_write)
+                    except:
+                        self._print("Connection lost")
+                        break
                     self._print("Sending data: {}".format(data_to_write))
             self._connected = False
             if sock is not None:
