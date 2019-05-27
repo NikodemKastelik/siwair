@@ -51,6 +51,9 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#order">{{ contents.navbar.right_item_2 }}</a>
           </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#production">{{ contents.navbar.right_item_3 }}</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -79,7 +82,7 @@
                 <i class="fas fa-search-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/cabin.png" alt="">
+            <img class="img-fluid" src="static/images/st10.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST10"></span>
             <span class="on-img-topleft">{{ contents.st10_desc.abbrev }}</span>
@@ -92,7 +95,7 @@
                 <i class="fas fa-search-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/cake.png" alt="">
+            <img class="img-fluid" src="static/images/st20.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST20"></span>
             <span class="on-img-topleft">{{ contents.st20_desc.abbrev }}</span>
@@ -105,7 +108,7 @@
                 <i class="fas fa-search-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/circus.png" alt="">
+            <img class="img-fluid" src="static/images/st30.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST30"></span>
             <span class="on-img-topleft">{{ contents.st30_desc.abbrev }}</span>
@@ -118,7 +121,7 @@
                 <i class="fas fa-search-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/game.png" alt="">
+            <img class="img-fluid" src="static/images/st40.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST40"></span>
             <span class="on-img-topleft">{{ contents.st40_desc.abbrev }}</span>
@@ -131,7 +134,7 @@
                 <i class="fas fa-search-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/safe.png" alt="">
+            <img class="img-fluid" src="static/images/st50.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST50"></span>
             <span class="on-img-topleft">{{ contents.st50_desc.abbrev }}</span>
@@ -144,7 +147,7 @@
                 <i class="fas fa-search-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/submarine.png" alt="">
+            <img class="img-fluid" src="static/images/st60.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST60"></span>
             <span class="on-img-topleft">{{ contents.st60_desc.abbrev }}</span>
@@ -241,7 +244,7 @@
       <!-- cart total -->
       <div class="cart-total-container d-flex justify-content-around text-capitalize mt-5">
         <h5>Suma</h5>
-        <h5> PLN <strong id="cart-total" class="font-weight-bold">10.00</strong> </h5>
+        <h5> Sztuk: <strong id="cart-total" class="font-weight-bold">0</strong> </h5>
       </div>
       <!--end cart total -->
       <!-- cart buttons -->
@@ -262,28 +265,26 @@
   </section>
 
   <!-- Order Status Section -->
-  <section class="bg-primary text-white mb-0">
+  <section id="production" class="bg-primary text-white mb-0">
     <div class="container">
+      <h2 class="text-center text-uppercase text-white">{{ contents.navbar.right_item_3 }}</h2>
+      <hr class="star-light mb-5">
+      <div id="order-status-done" class="order-status-done">
+      </div>
       <div id="order-status-current" class="order-status-current">
-        <!-- cart item -->
         <div class="order-status-current-item d-flex align-items-center my-3 order-status-current-empty">
           <h4 class="text-center text-uppercase text-white center"> Brak zamówień w produkcji </h4>
         </div>
-        <!--end of  cart item -->
       </div>
       <div id="order-status" class="order-status">
-        <!-- cart item -->
         <div class="order-status-item d-flex align-items-center my-3 order-status-empty">
           <h4 class="text-center text-uppercase text-white center"> Brak zamówień w kolejce </h4>
         </div>
-        <!--end of  cart item -->
       </div>
-      <!-- cart total -->
-      <div class="order-status-total-container d-flex justify-content-around text-capitalize mt-5">
+      <div class="order-status-total-container d-flex justify-content-around capitalize mt-5">
         <h5>Suma</h5>
-        <h5> Sztuk: <strong id="order-status-total" class="font-weight-bold">10.00</strong> </h5>
+        <h5> Sztuk w kolejce: <strong id="order-status-total" class="font-weight-bold">0</strong> </h5>
       </div>
-      <!--end cart total -->
     </div>
   </section>
 
@@ -314,7 +315,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-secondary text-uppercase mb-0">{{ contents.st10_desc.title }}</h2>
             <hr class="star-dark mb-5">
-            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/cabin.png" alt="">
+            <img class="img-fluid mb-5" src="static/images/st10.png" alt="">
             <p class="mb-5">{{ contents.st10_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
@@ -336,7 +337,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-secondary text-uppercase mb-0">{{ contents.st20_desc.title }}</h2>
             <hr class="star-dark mb-5">
-            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/cake.png" alt="">
+            <img class="img-fluid mb-5" src="static/images/st20.png" alt="">
             <p class="mb-5">{{ contents.st20_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
@@ -358,7 +359,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-secondary text-uppercase mb-0">{{ contents.st30_desc.title }}</h2>
             <hr class="star-dark mb-5">
-            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/circus.png" alt="">
+            <img class="img-fluid mb-5" src="static/images/st30.png" alt="">
             <p class="mb-5">{{ contents.st30_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
@@ -380,7 +381,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-secondary text-uppercase mb-0">{{ contents.st40_desc.title }}</h2>
             <hr class="star-dark mb-5">
-            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/game.png" alt="">
+            <img class="img-fluid mb-5" src="static/images/st40.png" alt="">
             <p class="mb-5">{{ contents.st40_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
@@ -402,7 +403,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-secondary text-uppercase mb-0">{{ contents.st50_desc.title }}</h2>
             <hr class="star-dark mb-5">
-            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/safe.png" alt="">
+            <img class="img-fluid mb-5" src="static/images/st50.png" alt="">
             <p class="mb-5">{{ contents.st50_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
@@ -424,7 +425,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-secondary text-uppercase mb-0">{{ contents.st60_desc.title }}</h2>
             <hr class="star-dark mb-5">
-            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/submarine.png" alt="">
+            <img class="img-fluid mb-5" src="static/images/st60.png" alt="">
             <p class="mb-5">{{ contents.st60_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
