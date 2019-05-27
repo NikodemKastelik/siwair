@@ -1,18 +1,32 @@
 
+@keyframes expand {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
 
 .order-status-item {
-  transition: all 2s ease-in-out;
   border-radius: 10px;
   border: 2px solid var(--mainWhite);
   padding: 10px;
+  animation: expand .5s ease-in;
 }
 
 .order-status-current-item {
-  transition: all 2s ease-in-out;
   border-radius: 10px;
   border: 2px solid var(--mainWhite);
   padding: 10px;
+  animation: expand .5s ease-in;
 }
+
+.order-status-done-item {
+  border-radius: 10px;
+  border: 2px solid var(--mainWhite);
+  padding: 10px;
+  animation: expand .5s ease-in;
+}
+
 /* end of cart */
 /* cart item */
 .order-status-item-image {
@@ -88,4 +102,19 @@
   width: 1%;
   height: 30px;
   background-color: #4CAF50;
+}
+
+.order-part-list {
+  list-style-type:none;
+}
+
+@keyframes delete {
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.delete-status-item {
+  animation: delete .5s ease-out;
 }

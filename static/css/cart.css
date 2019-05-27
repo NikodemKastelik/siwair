@@ -12,6 +12,14 @@
 *:focus {
     outline: 0 !important;
 }
+
+@keyframes expand {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
 /* cart  */
 .cart {
   /*
@@ -22,10 +30,10 @@
 }
 
 .cart-item {
-  transition: all 2s ease-in-out;
   border-radius: 10px;
   border: 2px solid var(--mainWhite);
   padding: 10px;
+  animation: expand .5s ease-in;
 }
 
 /* end of cart */
@@ -105,4 +113,15 @@
 .center {
   margin: auto;
   padding: 10px;
+}
+
+@keyframes delete {
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.delete-cart-item {
+  animation: delete .5s ease-out;
 }
