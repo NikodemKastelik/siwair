@@ -82,7 +82,7 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/cabin.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST10"></span>
-            <span class="on-img-topleft">ST10</span>
+            <span class="on-img-topleft">{{ contents.st10_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
@@ -95,7 +95,7 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/cake.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST20"></span>
-            <span class="on-img-topleft">ST20</span>
+            <span class="on-img-topleft">{{ contents.st20_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
@@ -108,7 +108,7 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/circus.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST30"></span>
-            <span class="on-img-topleft">ST30</span>
+            <span class="on-img-topleft">{{ contents.st30_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
@@ -121,7 +121,7 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/game.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST40"></span>
-            <span class="on-img-topleft">ST40</span>
+            <span class="on-img-topleft">{{ contents.st40_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
@@ -134,7 +134,7 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/safe.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST50"></span>
-            <span class="on-img-topleft">ST50</span>
+            <span class="on-img-topleft">{{ contents.st50_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
@@ -147,11 +147,11 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/submarine.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST60"></span>
-            <span class="on-img-topleft">ST60</span>
+            <span class="on-img-topleft">{{ contents.st60_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-7">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
                 <i class="fas fa-search-plus fa-3x"></i>
@@ -160,11 +160,11 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/cabin.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST70"></span>
-            <span class="on-img-topleft">ST70</span>
+            <span class="on-img-topleft">{{ contents.st70_desc.abbrev }}</span>
           </a>
         </div>
         <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-8">
             <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
               <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
                 <i class="fas fa-search-plus fa-3x"></i>
@@ -173,7 +173,7 @@
             <img class="img-fluid" src="static/{{ bootstrap_folder }}/img/portfolio/cake.png" alt="">
             <div class="on-img-topright">Status:</div>
             <span class="status-dot" id="status_ST80"></span>
-            <span class="on-img-topleft">ST80</span>
+            <span class="on-img-topleft">{{ contents.st80_desc.abbrev }}</span>
           </a>
         </div>
       </div>
@@ -312,13 +312,13 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st10_desc.title }}</h2>
             <hr class="star-dark mb-5">
             <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/cabin.png" alt="">
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <p class="mb-5">{{ contents.st10_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
-              Close Project</a>
+              Powrót</a>
           </div>
         </div>
       </div>
@@ -334,13 +334,13 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st20_desc.title }}</h2>
             <hr class="star-dark mb-5">
             <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/cake.png" alt="">
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <p class="mb-5">{{ contents.st20_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
-              Close Project</a>
+              Powrót</a>
           </div>
         </div>
       </div>
@@ -356,13 +356,13 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st30_desc.title }}</h2>
             <hr class="star-dark mb-5">
             <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/circus.png" alt="">
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <p class="mb-5">{{ contents.st30_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
-              Close Project</a>
+              Powrót</a>
           </div>
         </div>
       </div>
@@ -378,13 +378,13 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st40_desc.title }}</h2>
             <hr class="star-dark mb-5">
             <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/game.png" alt="">
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <p class="mb-5">{{ contents.st40_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
-              Close Project</a>
+              Powrót</a>
           </div>
         </div>
       </div>
@@ -400,13 +400,13 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st50_desc.title }}</h2>
             <hr class="star-dark mb-5">
             <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/safe.png" alt="">
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <p class="mb-5">{{ contents.st50_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
-              Close Project</a>
+              Powrót</a>
           </div>
         </div>
       </div>
@@ -422,13 +422,57 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st60_desc.title }}</h2>
             <hr class="star-dark mb-5">
             <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/submarine.png" alt="">
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <p class="mb-5">{{ contents.st60_desc.desc }}</p>
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
-              Close Project</a>
+              Powrót</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 7 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-7">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st70_desc.title }}</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/safe.png" alt="">
+            <p class="mb-5">{{ contents.st70_desc.desc }}</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Powrót</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 8 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-8">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">{{ contents.st80_desc.title }}</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="static/{{ bootstrap_folder }}/img/portfolio/safe.png" alt="">
+            <p class="mb-5">{{ contents.st80_desc.desc }}</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Powrót</a>
           </div>
         </div>
       </div>

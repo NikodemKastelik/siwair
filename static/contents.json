@@ -10,5 +10,53 @@
     {
         "title": "Laboratorium Industry 4.0",
         "subtitle": "Realizuj zamówienia - Obserwuj stacje - Ciesz się produktem"
+    },
+    "st10_desc":
+    {
+        "abbrev": "ST10",
+        "title": "Stacja 10",
+        "desc":  "Zadaniem stacji jest zatrzymanie elementu na początku linii produkcyjnej i obsługa transportu wzdłuż stacji ST10-ST40. Korpus może opuścić stanowisko tylko w przypadku wydania zezwolenia przez użycie znacznika RFID. W momencie, gdy znacznik uruchamia produkcję, system przypisuje produkowanemu elementowi numer wykorzystanej karty/transpondera (w założeniu możliwe jest sprawdzenie, który z pracowników zezwolił na produkcję danego elementu)."
+    },
+    "st20_desc":
+    {
+        "abbrev": "ST20",
+        "title": "Stacja 20",
+        "desc":  "Stacja realizuje w zależności od zamówienia osadzenie tulei na produkcie, a następnie jej wtłoczenie lub nie wprowadza żadnych modyfikacji produktu."
+    },
+    "st30_desc":
+    {
+        "abbrev": "ST30",
+        "title": "Stacja 30",
+        "desc":  " "
+    },
+    "st40_desc":
+    {
+        "abbrev": "ST40",
+        "title": "Stacja 40",
+        "desc":  " "
+    },
+    "st50_desc":
+    {
+        "abbrev": "ST50",
+        "title": "Stacja 50",
+        "desc":  "Stacja realizuje weryfikację produktu z wykorzystaniem systemu wizyjnego (ilość i rozłożenie śrub). Informacja, czy produkt jest zgodny z zamówieniem przekazywana jest dalej i wykorzystywana przez stację 60."
+    },
+    "st60_desc":
+    {
+        "abbrev": "ST60",
+        "title": "Stacja 60",
+        "desc": "Stacja realizuje segregację produktów na wykonane prawidłowo (rampa 1 i rampa 2) oraz nieprawidłowo (rampa 3), na podstawie oceny jakości wykonania realizowanej na stanowisku nr 50. Dodatkowo ST60 obsługuje aplikację na HoloLens, która pomaga operatorowi w wykonaniu demontażu produktów z defektem."
+    },
+    "st70_desc":
+    {
+        "abbrev": "ST70",
+        "title": "Stacja 70",
+        "desc":  "Stacja realizuje wyciskanie tuleji oraz transport produktu na wózku napędzanym przez serwonapęd S110."
+    },
+    "st80_desc":
+    {
+        "abbrev": "ST80",
+        "title": "Stacja 80",
+        "desc":  " "
     }
 }
