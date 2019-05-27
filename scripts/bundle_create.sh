@@ -15,4 +15,5 @@ mkdir bundle
 pyinstaller -F --dist bundle/ siwair.py
 cp -r templates bundle/
 cp -r static bundle/
+cp serverconfig.json bundle/
 cd -

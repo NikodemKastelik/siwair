@@ -6,6 +6,7 @@ from tkinter import font
 from plc_master_manager import PlcMasterManager
 from order_list import Order
 from socket_server_manager import SocketServerManager
+from config_parser import parseConfig
 
 LAST_STATION_NUM = 60
 STATION_INTERVAL = 10
@@ -210,9 +211,8 @@ class DummyMasterPlc:
 
 
 if __name__ == "__main__":
-    port_tx = 2098
-    port_rx = 2099
     server  = "localhost"
+    _, rx_port, tx_port = parseConfig("serverconfig.json")
 
-    dummyplc = DummyMasterPlc(server, port_tx, port_rx)
+    dummyplc = DummyMasterPlc(server, tx_port, rx_port)
     dummyplc.start()
