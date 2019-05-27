@@ -6,10 +6,7 @@ from flask import request
 import json
 import sys
 import atexit
-
-sys.path.insert(0, "scripts/")
 from plc_master_manager import PlcMasterManager
-
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
@@ -69,3 +66,6 @@ def deleteorder():
     id = request.get_json()
     plcmngr.removeOrder(id)
     return 'JSON posted'
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
